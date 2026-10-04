@@ -1,107 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+    color-scheme: light;
+    --lemon: #f8d94e;
+    --leaf: #426b43;
+    --leaf-light: #e8f0d5;
+    --coral: #ed827e;
+    --ink: #3c4937;
+    --paper: #fffdf1;
+}
+
 * {
     box-sizing: border-box;
 }
 
 body {
+    min-height: 100vh;
     margin: 0;
+    color: var(--ink);
+    background-color: #fff9df;
+    background-image:
+        radial-gradient(#e9cc66 1px, transparent 1px),
+        linear-gradient(135deg, #fff9df 0%, #fff2b5 100%);
+    background-position: 0 0, center;
+    background-size: 18px 18px, cover;
+    font-family: 'Nunito', sans-serif;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
-    margin: 20px;
+    gap: 20px;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 18px 28px;
+    border-bottom: 2px dashed #91a66b;
 }
 
 .nurikava img {
-    width: 80px;
+    display: block;
+    width: 72px;
     aspect-ratio: 1;
+    border: 4px solid var(--paper);
     border-radius: 50%;
     object-fit: cover;
+    box-shadow: 0 0 0 2px var(--leaf);
 }
 
 .nurikinfo {
     display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
-.nurikinfo button {
+.nurikinfo #nurikwh {
+    display: inline-block;
     max-width: 100%;
-    margin: 0;
-    padding: 10px 14px;
-    border: none;
-    border-radius: 10px;
-    background-color: aqua;
-    font-size: 20px;
+    padding: 11px 17px;
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    background-color: var(--coral);
+    box-shadow: 3px 3px 0 var(--ink);
+    color: #342f27;
+    font: 800 16px 'Nunito', sans-serif;
+    text-decoration: none;
+    transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
 }
 
-.nurikinfo button:hover {
-    background-color: rgb(94, 94, 199);
-    color: white;
+.nurikinfo #nurikwh:hover {
+    transform: translate(2px, 2px);
+    background-color: #f39a8e;
+    box-shadow: 1px 1px 0 var(--ink);
 }
 
 .nurikdes {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 32px;
-    max-width: 1000px;
-    margin: 48px auto;
-    padding: 0 24px;
+    gap: clamp(32px, 7vw, 88px);
+    max-width: 1080px;
+    min-height: 590px;
+    margin: 0 auto;
+    padding: 70px 40px 84px;
 }
 
-.nurikdes .nuriktext {
-    min-width: 0;
-    font-size: 20px;
+.nurikdes .imgnurik {
+    position: relative;
+    flex: 0 1 390px;
+    padding: 12px 12px 16px;
+    border: 2px solid var(--leaf);
+    background: var(--paper);
+    box-shadow: 9px 10px 0 var(--coral);
+    transform: rotate(-2deg);
 }
 
-.nurikdes .nuriktext p {
-    line-height: 1.6;
+.nurikdes .imgnurik::after {
+    position: absolute;
+    right: -24px;
+    bottom: -24px;
+    z-index: -1;
+    width: 62px;
+    height: 62px;
+    border: 2px solid var(--leaf);
+    border-radius: 50%;
+    background: var(--lemon);
+    content: '';
 }
 
 .nurikdes .imgnurik img {
     display: block;
-    width: min(100%, 360px);
+    width: 100%;
     aspect-ratio: 1;
-    border-radius: 12px;
     object-fit: cover;
 }
 
-.nurikinfo button a {
-    color: black;
-    text-decoration: none;
+.nurikdes .nuriktext {
+    flex: 1 1 420px;
+    min-width: 0;
+    max-width: 510px;
 }
 
-@media (max-width: 600px) {
+.nurikdes .nuriktext::before {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 7px 12px;
+    border: 1px solid var(--leaf);
+    border-radius: 4px;
+    background: var(--leaf-light);
+    color: var(--leaf);
+    content: 'LEMON CLUB / CAT PROFILE';
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.nurikdes .nuriktext h1 {
+    margin: 0 0 18px;
+    color: var(--leaf);
+    font-family: 'Comfortaa', sans-serif;
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 700;
+    line-height: 1.1;
+    text-shadow: 3px 3px 0 #f5d868;
+}
+
+.nurikdes .nuriktext p {
+    max-width: 46ch;
+    margin: 0;
+    padding-left: 18px;
+    border-left: 4px solid var(--coral);
+    color: #4c5141;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+@media (max-width: 700px) {
     nav {
-        margin: 16px;
+        margin: 0 16px;
+        padding: 15px 0;
     }
 
     .nurikava img {
-        width: 64px;
+        width: 60px;
     }
 
-    .nurikinfo button {
+    .nurikinfo #nurikwh {
         padding: 9px 12px;
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .nurikdes {
         flex-direction: column;
         align-items: stretch;
-        gap: 20px;
-        margin: 28px auto;
-        padding: 0 16px;
+        gap: 38px;
+        min-height: 0;
+        padding: 46px 30px 68px;
     }
 
-    .nurikdes .imgnurik img {
-        width: 100%;
-        max-height: 360px;
+    .nurikdes .imgnurik {
+        align-self: center;
+        flex: none;
+        width: min(100%, 390px);
     }
 
     .nurikdes .nuriktext {
-        font-size: 18px;
+        flex: none;
+        width: 100%;
+        max-width: 540px;
+        margin: 0 auto;
+    }
+
+    .nurikdes .nuriktext h1 {
+        font-size: 48px;
+    }
+
+    .nurikdes .nuriktext p {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 380px) {
+    nav {
+        gap: 12px;
+    }
+
+    .nurikinfo #nurikwh {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .nurikdes {
+        padding-right: 22px;
+        padding-left: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }
